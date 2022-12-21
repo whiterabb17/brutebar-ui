@@ -5,7 +5,7 @@ UI - can be found <a href="https://github.com/whiterabb17/brutebar-ui">here</a><
 Library & CLI Version - can be found <a href="https://github.com/whiterabb17/brutebar">here</a><br>
 
 # UI Demo
-<img src="https://github.com/whiterabb17/brutebar-ui/go-ui.gif" alt="brutebar-ui">
+<img src="https://github.com/whiterabb17/brutebar-ui/raw/main/go-ui.gif" alt="brutebar-ui">
 
 Coverage:
 - Windows ✅
