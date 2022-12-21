@@ -4,3 +4,4 @@ Thumbs.db
 bind*
 output
 windows.syso
+bin/windows-amd64/vuln-report.txt

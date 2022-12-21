@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="static/lib/font-awesome-4.7.0/css/font-awesome.min.css">
 </head>
 <body>
+    <h3 class="title">BRUTEBAR</h3>
     <div class="mainpanel">
-        <h3 class="title">BRUTEBAR</h3>
         <div class="left" id="left">
             <div class="panel" style="height: 308px;">
                 <span>
@@ -40,22 +40,20 @@
                     <label for="userpass">Path/to/User:PassList (locally)
                     <input id="userpass" type="text" name="userpass" style="width:100%"/>
                 </div>
+                <div class="statuspanel">
+                        <span style="color:white">Current Attack</span>&emsp14;<br>
+                        <span id="protoheader" style="color:rgb(202 90 44);padding-right: 50px;">Protocol:&emsp;&emsp;</span>
+                        <!-- &emsp14;
+                        <span id="targetheader" style="color:rgb(179, 87, 18)">TargetIP:</span> -->
+                </div>
             </div>
         </div>
         <div class="rightpanel" id="right">
+            <h3 style="align-self:center;/* padding-left: 176px; */display: initial;/* left: 100px; */right: 173px;position: relative;">Attack Results</h3>
             <div id="logresults" class="logPanel">
-                <h3 style="align-self:center">Attack Results</h3>
                 <div class="log-panel" id="logspace">
 
                 </div>  
-            </div>
-        </div>
-        <div class="statuspanel">
-            <div>
-                <span style="color:white">Current Attack</span>&emsp14;
-                <span id="protoheader" style="color:rgb(209, 43, 43)">Protocol:</span>
-                <!-- &emsp14;
-                <span id="targetheader" style="color:rgb(179, 87, 18)">TargetIP:</span> -->
             </div>
         </div>
     </div> 
@@ -64,7 +62,6 @@
     <script src="static/lib/astiloader/astiloader.js"></script>
     <script src="static/lib/astimodaler/astimodaler.js"></script>
     <script src="static/lib/astinotifier/astinotifier.js"></script>
-    <script src="static/lib/chart/chart.min.js"></script>
     <script type="text/javascript">
         app.init();
         let invoked = false;
@@ -72,6 +69,7 @@
             if (!invoked) {
                 let type = document.getElementById("selectedAttack").value
                 let usr = document.getElementById("userpass").value
+                let pwd = "";
                 // let pwd = document.getElementById("passlistText").value
                 let ip = document.getElementById("target").value
                 // let port = document.getElementById("targetport").value

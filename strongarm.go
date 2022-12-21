@@ -108,7 +108,7 @@ func sendToUIHtml(payload string) {
 }
 
 func sendToUI(payload string) {
-	if err := bootstrap.SendMessage(W, "ann", payload, func(m *bootstrap.MessageIn) {
+	if err := bootstrap.SendMessage(W, "log", payload, func(m *bootstrap.MessageIn) {
 		// Unmarshal payload
 		var s string
 		if err := json.Unmarshal(m.Payload, &s); err != nil {

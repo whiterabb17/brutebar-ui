@@ -1,8 +1,11 @@
 # brutebar UI
-SSH & SMB Bruteforcing
-UI and module both written in Go
-UI - can be found <a href="https://github.com/whiterabb17/brutebar-ui">here</a>
-Library & CLI Version - can be found <a href="https://github.com/whiterabb17/brutebar">here</a>
+SSH & SMB Bruteforcing<br>
+UI and module both written in Go<br>
+UI - can be found <a href="https://github.com/whiterabb17/brutebar-ui">here</a><br>
+Library & CLI Version - can be found <a href="https://github.com/whiterabb17/brutebar">here</a><br>
+
+# UI Demo
+<img src="https://github.com/whiterabb17/brutebar-ui/go-ui.gif" alt="brutebar-ui">
 
 Coverage:
 - Windows ✅

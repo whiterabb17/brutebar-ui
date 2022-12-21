@@ -3,7 +3,7 @@
 }
 
 html, body {
-    background-color: #fff;
+    background-color: #393434;
     color: #333;
     height: 100%;
     margin: 0;
@@ -62,8 +62,9 @@ html, body {
 }
 
 .log-panel {
-    height: 95%;
+    height: 76%;
     width: 95%;
+    overflow: auto;
 }
 
 .porttable {
@@ -74,13 +75,15 @@ html, body {
 }
 
 .statuspanel {
+    right: 10px;
     float: left;
-    height: 12%;
-    background-color: rgb(66, 74, 72);
+    height: 22%;
+    background-color: #393636;
     overflow: none;
-    padding: 15px;
+    padding: 12px;
     width: 100%;
     bottom: 5%;
+    /* padding-left: 3px; */
     align-content: flex-start;
     vertical-align: bottom;
 }
@@ -91,8 +94,9 @@ html, body {
     float: left;
 }
 .title {
-    font-size: 1.5em;
+    font-size: 1.17em;
     text-align: center;
+    color: white;
     word-wrap: break-word;
 }
 
@@ -106,7 +110,7 @@ html, body {
 }
 .panel {
     background-color: #f1f1f1;
-    border: solid 1px #e1e1e1;
+    border: solid 2px #e1e1e1;
     border-radius: 4px;
     margin-top: 15px;
     margin-left: 15px;
@@ -136,7 +140,7 @@ html, body {
 
 .rightpanel {
     background-color: #f1f1f1;
-    border: solid 1px #e1e1e1;
+    border: solid 2px #e1e1e1;
     border-radius: 4px;
     min-width: 500px;
     margin-top: 15px;
@@ -150,16 +154,15 @@ html, body {
 }
 
 .logPanel {
-    background-color: #7b7777;
+    background-color: #393636;
     border-radius: 4px;
-    top: 0%;
-    min-height: 275px;
+    padding-top: 15px;
+    min-height: 256px;
     float: left;
-    right: 80%;
-    text-align: center;
-    width: 100%;    
-    height: 270px;
-    align-self: flex-end;
+    text-align: initial;
+    width: 100%;
+    position: relative;
+    height: 256px;
 }
 
 .stat {

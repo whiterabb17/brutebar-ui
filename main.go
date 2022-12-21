@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"strings"
 	"time"
 
 	"github.com/asticode/go-astikit"
@@ -40,6 +41,10 @@ func main() {
 	// Parse flags
 	fs.Parse(os.Args[1:])
 	L = l
+	deb := false
+	if strings.Contains(os.Args[0], "BruteBarDBG") {
+		deb = true
+	}
 	// Run bootstrap
 	l.Printf("Running app built at %s\n", BuiltAt)
 	if err := bootstrap.Run(bootstrap.Options{
@@ -53,7 +58,7 @@ func main() {
 			VersionAstilectron: VersionAstilectron,
 			VersionElectron:    VersionElectron,
 		},
-		Debug:  true,
+		Debug:  deb,
 		Logger: l,
 		MenuOptions: []*astilectron.MenuItemOptions{{
 			Label: astikit.StrPtr("File"),
@@ -67,9 +72,9 @@ func main() {
 							Link string `json:"link"`
 						}
 						newer := &inner{
-							Date: "Message",
-							Text: "Event",
-							Link: "Final Call",
+							Date: "Coming Soon",
+							Text: "Bruteforcing functions coming soon",
+							Link: "SMB, LDAP, httpBasicDiget, httpsDigest, FTP, RDP",
 						}
 						if err := bootstrap.SendMessage(w, "ann", newer, func(m *bootstrap.MessageIn) {
 							// Unmarshal payload
@@ -91,12 +96,6 @@ func main() {
 		OnWait: func(_ *astilectron.Astilectron, ws []*astilectron.Window, _ *astilectron.Menu, _ *astilectron.Tray, _ *astilectron.Menu) error {
 			w = ws[0]
 			W = w
-			go func() {
-				time.Sleep(5 * time.Second)
-				if err := bootstrap.SendMessage(w, "check.out.menu", "Don't forget to check out the menu!"); err != nil {
-					l.Println(fmt.Errorf("sending check.out.menu event failed: %w", err))
-				}
-			}()
 			return nil
 		},
 		RestoreAssets: RestoreAssets,
@@ -106,12 +105,15 @@ func main() {
 			Options: &astilectron.WindowOptions{
 				BackgroundColor: astikit.StrPtr("#333"),
 				Center:          astikit.BoolPtr(true),
-				Height:          astikit.IntPtr(580),
+				Height:          astikit.IntPtr(475),
 				Width:           astikit.IntPtr(940),
 			},
 		}},
 	}); err != nil {
 		log.SetOutput(os.Stdout)
-		l.Fatal(fmt.Errorf("running bootstrap failed: %w", err))
+		l.Println(fmt.Errorf("running bootstrap failed: %w", err))
+		log.Println("Sleeping for 30 seconds before attempting to restart")
+		time.Sleep(30 * time.Second)
+		main()
 	}
 }

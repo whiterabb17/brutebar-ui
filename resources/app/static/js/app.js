@@ -26,7 +26,7 @@ let app = {
           payload: "",
         },
         function (message) {
-          app.addLog("okay")
+          app.addLog("Initialized Successfully")
          }
       );
       //  app.bindEvents();
@@ -39,14 +39,13 @@ let app = {
     let div = document.createElement("div");
     let a = document.createElement("a");
     a.text = "Result: ";
-    a.style = "color:red";
+    a.style = "color:#f79797;width:100px;padding-left: 15px;";
     let b = document.createElement("a");
     b.text = log;
     b.style = "color:white";
     let span = document.createElement("span");
     span.style = "white-space:pre;display:block;"
     span.append(a);
-    span.innerHTML = "&emsp;&emsp;"
     span.append(b);
     div.append(span);
     pane.append(div);
@@ -76,20 +75,20 @@ let app = {
         case "fatal_error":
           shared.showError(message.payload);
           app.addLog("Initialized Successfully");
-          break;
+          return { payload: "Recieved" };
         case "initokay":
           app.addLog("Initialized Successfully");
           asticode.notifier.success("Initialized Successfully");
-          break;
+          return { payload: "Recieved" };
         case "log":
           app.addLog(message.payload);
-          break;
+          return { payload: "Recieved" };
         case "valuesrequired":
           app.addLog("Required values for the attack are missing");
-          break;
+          return { payload: "Recieved" };
         case "result":
           app.addLog(message.payload);
-          break;
+          return { payload: "Recieved" };
         case "startedattack":
           asticode.notifier.success(ih)
           let pq = document.getElementById("protoheader")
@@ -148,78 +147,6 @@ let app = {
           asticode.modaler.show();
           return { payload: "Finally" };
       }
-    });
-  },
-  // Bind to UI events using jQuery
-  bindEvents: function () {
-    $("#start_stop").bind("click", function (e) { });
-
-    $(".header-button.settings").bind("click", function () {
-      app.loadSettings();
-    });
-    $(".header-button.help").bind("click", function () {
-      $("#help").toggleClass("dn");
-    });
-    $(".header-button.minimize").bind("click", function () {
-      remote.getCurrentWindow().minimize();
-    });
-    $(".header-button.exit").bind("click", function () {
-      remote.getCurrentWindow().close();
-    });
-
-    $(document).on("click", "#change_pool", function () {
-      app.loadSettings();
-    });
-
-    // TODO: Part of the show more pools hack
-    $(document).on("click", "#show_pool_list", function () {
-      $(this).hide();
-      $("#pool_list_bottom").slideDown();
-    });
-
-    $(".close-settings").bind("click", function () {
-      $("#settings").toggleClass("dn");
-    });
-
-    $(".close-help").bind("click", function () {
-      $("#help").toggleClass("dn");
-    });
-
-    $(document).on("click", ".pool", function () {
-      $(".pool").removeClass("selected");
-      $(this).addClass("selected");
-    });
-
-    $("#update").bind("click", function () {
-      var configData = {
-        address: $("#settings_mining_address").val(),
-        pool: $("#pool_list").find(".selected").data("id"),
-        threads: parseInt($("#threads option:selected").attr("value")),
-        max_cpu: parseInt($("#max_cpu option:selected").attr("value")),
-      };
-      if (configData.address == "") {
-        alert("You must enter your address");
-        return false;
-      }
-      // Just make sure they're not using integrated addresses or
-      // invalid ones
-      if (shared.validateWalletAddress(configData.address) == false) {
-        alert("Please enter a valid Torque address starting with 'Se' or 'SE'");
-        return false;
-      }
-
-      $("#update").html("Updating...");
-      astilectron.sendMessage(
-        { name: "reconfigure", payload: configData },
-        function (message) {
-          $(".current .pool h3").html("Updating...");
-          $("#settings").toggleClass("dn");
-          $("#update").html("Update");
-          $("#miner_address").html("Updating");
-          app.resetMinerStats();
-          asticode.notifier.success("Miner reconfigured");
-        }
-      );
     });
   },
 };
