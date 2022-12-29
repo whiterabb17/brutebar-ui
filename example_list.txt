@@ -1,0 +1,11 @@
+admin:admin
+root:root
+root:toor
+linux:linux
+admin:Password1!
+admin:Password123
+admin:Password1
+admin:Password
+admin:password
+admin:Admin123
+admin:admin123

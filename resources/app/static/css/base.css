@@ -62,7 +62,7 @@ html, body {
 }
 
 .log-panel {
-    height: 76%;
+    height: 90%;
     width: 95%;
     overflow: auto;
 }
@@ -162,7 +162,7 @@ html, body {
     text-align: initial;
     width: 100%;
     position: relative;
-    height: 256px;
+    height: 100%;
 }
 
 .stat {
